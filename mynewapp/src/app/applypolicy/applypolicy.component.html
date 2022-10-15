@@ -1,0 +1,65 @@
+<div>
+  <h2>Apply Policy</h2>
+  <div *ngIf="flag">
+    <h2>Add Details</h2>
+    <form (ngSubmit)="updateDataFromDb()">
+      <label>User ID</label>
+      <input type="number" name="userId" [(ngModel)]="userId" readonly /><br />
+      <label>Username</label>
+      <input type="text" name="username" [(ngModel)]="username" /><br />
+      <label for="insurances">Choose a Policy Type: </label>
+      <select id="insurances">
+        <option value="Car Insurance" name="policytype [(ngModel)]=" policytype>
+          Car Insurance
+        </option>
+        <br />
+        <option
+          value="Health Insurance"
+          name="policytype [(ngModel)]="
+          policytype
+        >
+          Health Insurance
+        </option>
+        <br />
+        <option
+          value="Life Insurance"
+          name="policytype [(ngModel)]="
+          policytype
+        >
+          Life Insurance
+        </option>
+        <br />
+      </select>
+      <input type="submit" value="update data" />
+      <input type="reset" value="reset" />
+    </form>
+  </div>
+
+  <h3>Verify Details</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Policy Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of policies">
+        <td>{{ p.userId }}</td>
+        <td>{{ p.username }}</td>
+        <td>{{ p.policytype }}</td>
+        <td>
+          <input
+            type="button"
+            value="apply"
+            (click)="applyPolicy(p.policyId)"
+          />
+        </td>
+        <td>
+          <input type="button" value="update" (click)="updatePolicy(p)" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
