@@ -1,48 +1,12 @@
 <div class="container">
-  <h2>Apply Policy</h2>
-  <div *ngIf="flag">
-    <h2>Add Details</h2>
-    <form (ngSubmit)="updateDataFromDb()">
-      <label>User ID</label>
-      <input type="number" name="userId" [(ngModel)]="userId" /><br />
-      <label>Username</label>
-      <input type="text" name="name" [(ngModel)]="name" /><br />
-
-      <label for="insurances">Choose a Policy Type: </label>
-      <select id="insurances">
-        <option value="Car Insurance" name="policytype [(ngModel)]=" policytype>
-          Car Insurance
-        </option>
-        <br />
-        <option
-          value="Health Insurance"
-          name="policytype [(ngModel)]="
-          policytype
-        >
-          Health Insurance
-        </option>
-        <br />
-        <option
-          value="Life Insurance"
-          name="policytype [(ngModel)]="
-          policytype
-        >
-          Life Insurance
-        </option>
-        <br />
-      </select>
-      <input type="submit" value="update data" />
-      <input type="reset" value="reset" />
-    </form>
-  </div>
-
-  <p>Verify Details</p>
+  <p>Apply Policy</p>
   <table class="table table-hover">
     <thead>
       <tr>
         <th>User ID</th>
         <th>Username</th>
         <th>Policy Type</th>
+        <th>Apply Policy</th>
       </tr>
     </thead>
     <tbody>
@@ -56,9 +20,6 @@
             value="apply"
             (click)="applyPolicy(p.policyNum)"
           />
-        </td>
-        <td>
-          <input type="button" value="update" (click)="updatePolicy(p)" />
         </td>
       </tr>
     </tbody>

@@ -1,17 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Policy } from '../policy';
+import {FormGroup,FormControl} from '@angular/forms'
 import { PolicyService } from '../policy.service';
 
 @Component({
-  selector: 'app-applypolicy',
-  templateUrl: './applypolicy.component.html',
-  styleUrls: ['./applypolicy.component.css']
+  selector: 'app-deletepolicy',
+  templateUrl: './deletepolicy.component.html',
+  styleUrls: ['./deletepolicy.component.css']
 })
-export class ApplypolicyComponent implements OnInit {
+export class DeletepolicyComponent implements OnInit {
 
   policies:Array<Policy>=[];
   constructor(public router: Router, public ps:PolicyService) { }
+
+
+  policyRef = new FormGroup({
+    policyNum:new FormControl(),
+    name:new FormControl(),
+    email:new FormControl(),
+    phoneNum:new FormControl(),
+    address:new FormControl(),
+    policytype:new FormControl(),
+    status:new FormControl(),
+  })
+  storeMsg :string =""
 
   ngOnInit(): void {
     this.findAllPolicy();
@@ -24,7 +37,7 @@ export class ApplypolicyComponent implements OnInit {
   phoneNum:number=0;
   name:string ="";
   policytype:string ="";
-  status:string="";
+  status:number=0;
   
   
   findAllPolicy() {
@@ -35,12 +48,17 @@ export class ApplypolicyComponent implements OnInit {
     })
   }
 
-  applyPolicy(policy:any){
-    this.flag= true;
-    this.userId=policy.userId;
-    this.name=policy.name;
-    this.policytype=policy.policytype;
-}
+
+  deletePolicy(pid:number){
+    //console.log(pid)
+    this.ps.deletePolicyById(this.policyNum).subscribe({
+      next:(result:any)=>console.log(result),
+      error:(error:any)=>console.log(error),
+      complete:()=>{
+          this.findAllPolicy();   
+      }
+    })
+  } 
 
   updateDataFromDb(){
     let policy = {userId:this.userId,username:this.name,policytype:this.policytype};
@@ -54,4 +72,5 @@ export class ApplypolicyComponent implements OnInit {
     this.flag=false;
   }
 }
+
 
