@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ApplypolicyComponent } from './applypolicy/applypolicy.component';
 import { HistoryComponent } from './history/history.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent },
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
