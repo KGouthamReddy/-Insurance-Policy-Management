@@ -1,12 +1,13 @@
-<div>
+<div class="container">
   <h2>Apply Policy</h2>
   <div *ngIf="flag">
     <h2>Add Details</h2>
     <form (ngSubmit)="updateDataFromDb()">
       <label>User ID</label>
-      <input type="number" name="userId" [(ngModel)]="userId" readonly /><br />
+      <input type="number" name="userId" [(ngModel)]="userId" /><br />
       <label>Username</label>
-      <input type="text" name="username" [(ngModel)]="username" /><br />
+      <input type="text" name="name" [(ngModel)]="name" /><br />
+
       <label for="insurances">Choose a Policy Type: </label>
       <select id="insurances">
         <option value="Car Insurance" name="policytype [(ngModel)]=" policytype>
@@ -47,13 +48,13 @@
     <tbody>
       <tr *ngFor="let p of policies">
         <td>{{ p.userId }}</td>
-        <td>{{ p.username }}</td>
+        <td>{{ p.name }}</td>
         <td>{{ p.policytype }}</td>
         <td>
           <input
             type="button"
             value="apply"
-            (click)="applyPolicy(p.policyId)"
+            (click)="applyPolicy(p.policyNum)"
           />
         </td>
         <td>

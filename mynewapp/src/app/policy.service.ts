@@ -7,7 +7,7 @@ import { Policy } from './policy';
   providedIn: 'root'
 })
 export class PolicyService {
-  baseUrl:string ="http://localhost:9090/policy"
+  baseUrl:string ="http://localhost:8080/"
   constructor(public http:HttpClient) { }
 
   storePolicy(policy:any):Observable<string> {
@@ -26,15 +26,15 @@ export class PolicyService {
     return this.http.get<Policy[]>(this.baseUrl+"/findAllPolicy");
   }
 
-  findAllPolicyByStaus(status:any):Observable<Policy[]> {
+  findAllPolicyByStatus(status:any):Observable<Policy[]> {
     return this.http.get<Policy[]>(this.baseUrl+"/findPolicyByStatus/"+status);
   }
 
-  findAllPolicyById(policyId:number):Observable<string> {
-    return this.http.get(this.baseUrl+"/findAllPolicy/"+policyId,{responseType:"text"});
+  findAllPolicyById(policyNum:number):Observable<string> {
+    return this.http.get(this.baseUrl+"/findAllPolicy/"+policyNum,{responseType:"text"});
   }
-  deletePolicyById(policyId:number):Observable<string> {
-    return this.http.delete(this.baseUrl+"/deletePolicy/"+policyId,{responseType:"text"});
+  deletePolicyById(policyNum:number):Observable<string> {
+    return this.http.delete(this.baseUrl+"/deletePolicy/"+policyNum,{responseType:"text"});
   }
 
 }

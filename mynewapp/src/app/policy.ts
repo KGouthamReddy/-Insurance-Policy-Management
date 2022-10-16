@@ -1,9 +1,12 @@
 // map to entity class 
 export class Policy {
 
-    constructor(public policyId:number,
-        public username:string,
+    constructor( public policyNum:number,
         public userId:number,
-        public status:string,
-        public policytype:string){}
+        public email:string,
+        public address:string,
+        public phoneNum:number=0,
+        public name:string,
+        public policytype:string,
+        public status:string){}
 }

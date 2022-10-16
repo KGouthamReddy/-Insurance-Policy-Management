@@ -17,11 +17,16 @@ export class ApplypolicyComponent implements OnInit {
     this.findAllPolicy();
   }
   flag:boolean = false;
-  policyId:number =0;
+  policyNum:number =0;
   userId:number=0;
-  username:string ="";
+  email:string="";
+  address:string="";
+  phoneNum:number=0;
+  name:string ="";
   policytype:string ="";
   status:string="";
+  
+  
   findAllPolicy() {
     this.ps.findAllPolicy().subscribe({
       next:(result:any)=>this.policies=result,
@@ -33,13 +38,13 @@ export class ApplypolicyComponent implements OnInit {
   applyPolicy(policy:any){
     this.flag= true;
     this.userId=policy.userId;
-    this.username=policy.username;
+    this.name=policy.name;
     this.policytype=policy.policytype;
 }
 
   deletePolicy(pid:number){
     //console.log(pid)
-    this.ps.deletePolicyById(pid).subscribe({
+    this.ps.deletePolicyById(this.policyNum).subscribe({
       next:(result:any)=>console.log(result),
       error:(error:any)=>console.log(error),
       complete:()=>{
@@ -52,12 +57,12 @@ export class ApplypolicyComponent implements OnInit {
   updatePolicy(policy:any){
       this.flag= true;
       this.userId=policy.userId;
-      this.username=policy.username;
+      this.name=policy.username;
       this.policytype=policy.policytype;
   }
 
   updateDataFromDb(){
-    let policy = {userId:this.userId,username:this.username,policytype:this.policytype};
+    let policy = {userId:this.userId,username:this.name,policytype:this.policytype};
     this.ps.updatePolicy(policy).subscribe({
       next:(result:any)=>console.log(result),
       error:(error:any)=>console.log(error),

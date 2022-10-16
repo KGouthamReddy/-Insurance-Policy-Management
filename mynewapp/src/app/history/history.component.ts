@@ -19,11 +19,16 @@ export class HistoryComponent implements OnInit {
     this.findAllPolicy();
   }
   flag:boolean = false;
-  policyId:number =0;
+  policyNum:number =0;
   userId:number=0;
-  username:string ="";
+  email:string="";
+  address:string="";
+  phoneNum:number=0;
+  name:string ="";
   policytype:string ="";
   status:string="";
+  
+  
   findAllPolicy() {
     this.ps.findAllPolicy().subscribe({
       next:(result:any)=>this.policies=result,
