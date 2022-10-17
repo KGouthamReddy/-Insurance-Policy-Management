@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -10,6 +10,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PolicycrudComponent } from './policycrud/policycrud.component';
 import { UpdatepolicyComponent } from './updatepolicy/updatepolicy.component';
 import { DeletepolicyComponent } from './deletepolicy/deletepolicy.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { UseraccountComponent } from './useraccount/useraccount.component';
+import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent },
@@ -18,6 +22,10 @@ const appRoutes: Routes = [
   {path: 'policycrud', component: PolicycrudComponent},
   {path: 'deletepolicy', component: DeletepolicyComponent},
   {path: 'updatepolicy', component: UpdatepolicyComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'userdashboard/:userId', component: UserdashboardComponent},
+  {path: 'useraccount/:userId', component: UseraccountComponent},
 ]
 
 @NgModule({
@@ -29,11 +37,16 @@ const appRoutes: Routes = [
     PolicycrudComponent,
     UpdatepolicyComponent,
     DeletepolicyComponent,
+    LoginComponent,
+    SignupComponent,
+    UseraccountComponent,
+    UserdashboardComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],
