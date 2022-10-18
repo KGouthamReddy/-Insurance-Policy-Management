@@ -8,24 +8,33 @@ import { HistoryComponent } from './history/history.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PolicycrudComponent } from './policycrud/policycrud.component';
-import { UpdatepolicyComponent } from './updatepolicy/updatepolicy.component';
-import { DeletepolicyComponent } from './deletepolicy/deletepolicy.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { CreatepolicyComponent } from './createpolicy/createpolicy.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { SendqueryComponent } from './sendquery/sendquery.component';
+import { ViewqueriesComponent } from './viewqueries/viewqueries.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'applypolicy', component: ApplypolicyComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'policycrud', component: PolicycrudComponent},
-  {path: 'deletepolicy', component: DeletepolicyComponent},
-  {path: 'updatepolicy', component: UpdatepolicyComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'userdashboard/:userId', component: UserdashboardComponent},
   {path: 'useraccount/:userId', component: UseraccountComponent},
+  {path: 'contactus', component:ContactusComponent},
+  {path: 'aboutus', component:AboutusComponent},
+  {path: 'createpolicy', component: CreatepolicyComponent},
+  {path:'admin-login', component:AdminLoginComponent},
+  {path: 'updateprofile', component:UserdashboardComponent},
+  {path: 'sendquery', component:SendqueryComponent},
+  {path:'viewqueries', component:ViewqueriesComponent}
 ]
 
 @NgModule({
@@ -35,12 +44,14 @@ const appRoutes: Routes = [
     HistoryComponent,
     HomeComponent,
     PolicycrudComponent,
-    UpdatepolicyComponent,
-    DeletepolicyComponent,
     LoginComponent,
     SignupComponent,
     UseraccountComponent,
     UserdashboardComponent,
+    CreatepolicyComponent,
+    AdminLoginComponent,
+    SendqueryComponent,
+    ViewqueriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +60,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
   ],
+  
   providers: [],
   bootstrap: [AppComponent],
   exports: [RouterModule]

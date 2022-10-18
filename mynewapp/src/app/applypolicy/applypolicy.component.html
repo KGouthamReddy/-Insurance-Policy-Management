@@ -1,27 +1,29 @@
+<!-- <a class="btn btn-primary" routerLink="/useraccount/{id}">View Profile</a> -->
 <div class="container">
-  <p>Apply Policy</p>
-  <table class="table table-hover">
-    <thead>
+  <table class="table table-striped">
+    <thead class="table-dark">
       <tr>
-        <th>User ID</th>
-        <th>Username</th>
+        <th>User Id</th>
+        <th>Policy Id</th>
         <th>Policy Type</th>
-        <th>Apply Policy</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of policies">
-        <td>{{ p.userId }}</td>
-        <td>{{ p.name }}</td>
-        <td>{{ p.policytype }}</td>
+      <tr>
+        <td>{{ data.userId }}</td>
+        <td>{{ data.policyType }}</td>
+        <td>{{ data.policyNum }}</td>
         <td>
-          <input
+          <button
+            class="btn btn-outline-danger"
             type="button"
-            value="apply"
-            (click)="applyPolicy(p.policyNum)"
-          />
+            (click)="onApplyPolicy()"
+          >
+            Apply
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+<!-- Modal -->

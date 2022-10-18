@@ -16,7 +16,7 @@ export class UserdashboardComponent implements OnInit {
   isDisabled=true;
   userModelObj: UserDataModel = new UserDataModel();
 
-  private routeSub: Subscription;
+  private routeSub!: Subscription;
   public loginForm!:FormGroup;
 
   userId: any;

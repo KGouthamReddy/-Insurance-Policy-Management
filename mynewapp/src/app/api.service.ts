@@ -7,13 +7,25 @@ import { map } from 'rxjs/operators';
 })
 export class ApiService {
 
-  // backendurl="http://localhost:8080/insurance/user";  
 
-  backendurl="http://localhost:8000/user"; 
+  backendurl="http://localhost:8080/user"; 
 
   constructor(private http: HttpClient) { }
 
-  updateUser(data:any, UserId:number){
+  updateUser(data:any, user_id:number){
+    return this.http.put<any>(this.backendurl,data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+  updatePolicy(data:any, policy_id:number){
+    return this.http.put<any>(this.backendurl,data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  createPolicy(data:any, policy_id:number){
     return this.http.put<any>(this.backendurl,data)
     .pipe(map((res:any)=>{
       return res;

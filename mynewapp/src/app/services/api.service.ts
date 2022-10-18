@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 export class ApiService {
 
   backendurl="http://localhost:8080/insurance/user";  
+  updatePolicy: any;
 
   // backendurl="http://localhost:8000/user"; 
 

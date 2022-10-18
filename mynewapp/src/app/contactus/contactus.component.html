@@ -1,66 +1,93 @@
-<div class="bg-info contact4 overflow-hiddedn position-relative">
-  <!-- Row  -->
-  <div class="row no-gutters">
-    <div class="container">
-      <div class="col-lg-6 contact-box mb-4 mb-md-0">
-        <div class="">
-          <h1 class="title font-weight-light text-white mt-2">Contact Us</h1>
-          <form class="mt-3">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="form-group mt-2">
-                  <input
-                    class="form-control text-white"
-                    type="text"
-                    placeholder="name"
-                  />
+<div class="container">
+  <div class="text-center mt-5">
+    <h3>Feel free to contact us.</h3>
+  </div>
+  <div class="row">
+    <div class="col-lg-7 mx-auto">
+      <div class="card mt-2 mx-auto p-4 bg-light">
+        <div class="card-body bg-light">
+          <div class="container">
+            <form id="contact-form" role="form">
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="form_name">Firstname *</label>
+                      <input
+                        id="form_name"
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        placeholder="John"
+                        required="required"
+                        data-error="Firstname is required."
+                      />
+                    </div>
+                  </div>
+                  <br />
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="form_lastname">Lastname *</label>
+                      <input
+                        id="form_lastname"
+                        type="text"
+                        name="surname"
+                        class="form-control"
+                        placeholder="Smith"
+                        required="required"
+                        data-error="Lastname is required."
+                      />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="form_email">Email *</label>
+                      <input
+                        id="form_email"
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="johnsmith@abc.com"
+                        required="required"
+                        data-error="Valid email is required."
+                      />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="form_message">Write your message here*</label>
+                      <textarea
+                        id="form_message"
+                        name="message"
+                        class="form-control"
+                        placeholder="Write your message here."
+                        rows="4"
+                        required="required"
+                        data-error="Please, leave us a message."
+                      ></textarea
+                      ><br />
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <input
+                      type="submit"
+                      class="btn btn-warning btn-send-message pt-2 btn-block"
+                      value="Send Message"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-12">
-                <div class="form-group mt-2">
-                  <input
-                    class="form-control text-white"
-                    type="email"
-                    placeholder="email address"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="form-group mt-2">
-                  <textarea
-                    class="form-control text-white"
-                    rows="3"
-                    placeholder="message"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="col-lg-12 d-flex align-items-center mt-2">
-                <button
-                  type="submit"
-                  class="btn bg-white text-inverse px-3 py-2"
-                >
-                  <span> Submit</span>
-                </button>
-                <span class="ml-auto text-white align-self-center"
-                  ><i class="icon-phone mr-2"></i>+91 9902121176</span
-                >
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6 right-image p-r-0">
-      <iframe
-        src="https://www.google.com/maps?q=mphasis+pune+address&hl=en&sxsrf=ALiCzsbBfDul6k3myl-CsuTHosdv8MensQ:1666010559604&iflsig=AJiK0e8AAAAAY01bz-8wycnpv4Es57hFnowHyWmfz1Hw&gs_lcp=Cgdnd3Mtd2l6EAMYADIECCMQJzIECCMQJzIQCAAQgAQQhwIQsQMQgwEQFDIECAAQQzILCAAQgAQQsQMQgwEyDQgAEIAEEIcCELEDEBQyCggAELEDEIMBEEMyEQguEIAEELEDEIMBEMcBEK8BMg4ILhCxAxCDARDHARDRAzIFCAAQgAQ6CgguEMcBENEDECc6CggAEIAEEIcCEBQ6CAgAEIAEELEDOgoILhDHARCvARBDUERYpg9gsipoAHAAeACAAckNiAGHLJIBCzMtMS42LTQuMC4xmAEAoAEB&um=1&ie=UTF-8&sa=X&ved=2ahUKEwiMo4qBpef6AhX58jgGHRuoAcMQ_AUoAnoECAEQBA"
-        width="100%"
-        height="538"
-        frameborder="0"
-        style="border: 0"
-        allowfullscreen
-        data-aos="fade-left"
-        data-aos-duration="3000"
-      ></iframe>
     </div>
   </div>
 </div>

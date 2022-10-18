@@ -16,11 +16,11 @@ export class UseraccountComponent implements OnInit {
   isDisabled=true;
   userModelObj: UserDataModel = new UserDataModel();
 
-  backendurl="http://localhost:8080/insurance/user";
+  backendurl="http://localhost:8080/user";
 
   // backendurl="http://localhost:8000/user";
   
-  private routeSub: Subscription;
+  private routeSub!: Subscription;
   public loginForm!:FormGroup;
 
   data: any;

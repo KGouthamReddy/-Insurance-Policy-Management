@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private route: Router) { }
 
-  backendurl="http://localhost:8080/insurance/user";
+  backendurl="http://localhost:8080/user";
 
   // backendurl="http://localhost:8000/user";
 

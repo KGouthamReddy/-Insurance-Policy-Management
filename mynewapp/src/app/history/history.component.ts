@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Policy } from '../policy';
-import { PolicyService } from '../policy.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ApiService } from '../services/api.service';
+import { PolicyDataModel } from '../policycrud/policydata.model';
 
 @Component({
   selector: 'app-history',
@@ -10,31 +13,50 @@ import { PolicyService } from '../policy.service';
 })
 export class HistoryComponent implements OnInit {
   
-  policies:Array<Policy>=[];
+  isDisabled=true;
+  policyModelObj: PolicyDataModel = new PolicyDataModel();
 
-  constructor(public router: Router,
-    public ps:PolicyService) { }
+  backendurl="http://localhost:8080/insurance/policy";
+
+  // backendurl="http://localhost:8000/user";
+  
+  private routeSub: Subscription;
+  public loginForm!:FormGroup;
+
+  data: any;
+  userId: any;
+  policyId:any;
+  policyType: any;
+  policyNum: any;
+  approval:any;
+  userModelObj: any;
+  policyForm: any;
+  
+  constructor(private route: Router,private actroute:ActivatedRoute,private formBuilder:FormBuilder, private http: HttpClient, private api:ApiService) { }
 
   ngOnInit(): void {
-    this.findAllPolicy();
-  }
-  flag:boolean = false;
-  policyNum:number =0;
-  userId:number=0;
-  email:string="";
-  address:string="";
-  phoneNum:number=0;
-  name:string ="";
-  policytype:string ="";
-  status:string="";
-  
-  
-  findAllPolicy() {
-    this.ps.findAllPolicy().subscribe({
-      next:(result:any)=>this.policies=result,
-      error:(error:any)=>console.log(error),
-      complete:()=>console.log("completed")
+    this.routeSub=this.actroute.params.subscribe(params=>{
+      this.policyId = this.actroute.snapshot.params['policyId'];
+      this.fetchPolicyById(this.policyId);
+      console.log(this.policyId);
     })
   }
 
+  fetchPolicyById(policyId:any){
+    this.http.get(this.backendurl+"/"+this.policyId).subscribe(res=>{
+      this.data=res;
+      console.log(this.data);
+    })
+  }
+
+  onEdit(data:any){
+    this.userModelObj.userId=this.data.userId;
+    this.userModelObj.policyNum=this.data.policyNum;
+    this.policyForm.controls['userId'].setValue(data.userId);
+    this.policyForm.controls['policyId'].setValue(data.policyId);
+    this.policyForm.controls['policyNum'].setValue(data.policyNum);
+    this.policyForm.controls['policyType'].setValue(data.policyType);
+    this.policyForm.controls['approval'].setValue(data.approval);
+    
+  }
 }

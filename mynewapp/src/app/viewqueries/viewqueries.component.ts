@@ -4,16 +4,18 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../services/api.service';
-import { PolicyDataModel } from '../policycrud/policydata.model';
-@Component({
-  selector: 'app-applypolicy',
-  templateUrl: './applypolicy.component.html',
-  styleUrls: ['./applypolicy.component.css']
-})
-export class ApplypolicyComponent implements OnInit {
+import { QueryDataModel } from './policydata.model';
 
+@Component({
+  selector: 'app-viewqueries',
+  templateUrl: './viewqueries.component.html',
+  styleUrls: ['./viewqueries.component.css']
+})
+export class ViewqueriesComponent implements OnInit {
+
+ 
   isDisabled=true;
-  policyModelObj: PolicyDataModel = new PolicyDataModel();
+  queryModelObj: QueryDataModel = new QueryDataModel();
 
   backendurl="http://localhost:8080/insurance/policy";
 
@@ -24,10 +26,8 @@ export class ApplypolicyComponent implements OnInit {
 
   data: any;
   userId: any;
-  policyId:any;
-  policyType: any;
-  policyNum: any;
-  approval:any;
+ query: any;
+ queryId: any;
   userModelObj: any;
   policyForm: any;
   
@@ -35,14 +35,14 @@ export class ApplypolicyComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeSub=this.actroute.params.subscribe(params=>{
-      this.policyId = this.actroute.snapshot.params['policyId'];
-      this.fetchPolicyById(this.policyId);
-      console.log(this.policyId);
+      this.userId = this.actroute.snapshot.params['userId'];
+      this.fetchPolicyById(this.userId);
+      console.log(this.userId);
     })
   }
 
   fetchPolicyById(policyId:any){
-    this.http.get(this.backendurl+"/"+this.policyId).subscribe(res=>{
+    this.http.get(this.backendurl+"/"+this.userId).subscribe(res=>{
       this.data=res;
       console.log(this.data);
     })
@@ -59,13 +59,22 @@ export class ApplypolicyComponent implements OnInit {
     
   }
 
-  // onApplyPolicy(policyId: number){
-  //   this.http.push(this.backendurl+"/"+this.policyId).subscribe(res=>{
-  //     alert("Policy Applied...Saving data..");
-  //     this.route.navigate(['createpolicy']);
-  //   })
-  // }
-  onApplyPolicy(){
-      alert("Policy Applied...Saving data..");
-    }
+  updateQuery(){
+    this.queryModelObj.userId=this.policyForm.value.userId;
+    this.api.updatePolicy(this.queryModelObj, this.queryModelObj.queryId)
+    .subscribe(()=>{
+      alert("Policy Update Success");
+      this.policyForm.reset();
+      this.fetchPolicyById(this.queryId);
+    },()=>{
+      alert("Something Went Wrong...")
+    })
   }
+
+  onDeletePolicy(policyId: number){
+    this.http.delete(this.backendurl+"/"+this.queryId).subscribe(res=>{
+      alert("Policy Deleted...Saving data..");
+      this.route.navigate(['createpolicy']);
+    })
+  }
+}
