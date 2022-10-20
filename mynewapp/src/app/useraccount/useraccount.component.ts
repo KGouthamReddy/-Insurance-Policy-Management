@@ -17,8 +17,6 @@ export class UseraccountComponent implements OnInit {
   userModelObj: UserDataModel = new UserDataModel();
 
   backendurl="http://localhost:8080/user";
-
-  // backendurl="http://localhost:8000/user";
   
   private routeSub!: Subscription;
   public loginForm!:FormGroup;

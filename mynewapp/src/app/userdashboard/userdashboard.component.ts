@@ -32,7 +32,22 @@ export class UserdashboardComponent implements OnInit {
   }
 
   viewProfile(){
-    this.route.navigate(['/useraccount',this.userId])
+    this.route.navigate(['/useraccount',this.userId]);
   }
 
+  viewHistory(){
+    this.route.navigate(['/history',this.userId]);
+  }
+
+  applyPolicy(){
+    this.route.navigate(['/applypolicy',this.userId]);
+  }
+
+  sendQuery(){
+    this.route.navigate(['/sendquery',this.userId]);
+  }
+
+  viewQuery(){
+    this.route.navigate(['/viewquery',this.userId]);
+  }
 }

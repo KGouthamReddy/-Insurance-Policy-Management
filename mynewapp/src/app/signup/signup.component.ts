@@ -17,8 +17,6 @@ export class SignupComponent implements OnInit {
 
   backendurl="http://localhost:8080/user";
 
-  // backendurl="http://localhost:8000/user";
-
   ngOnInit(): void {
     this.signupForm=this.formBuilder.group({
       name:['', Validators.required],

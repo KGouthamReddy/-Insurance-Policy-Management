@@ -1,0 +1,24 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>User Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phonenumber</th>
+                <th>Address</th>
+                <th>Policynumber</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of fetchedCustomer">
+                <td>{{c.userId}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.phoneNum}}</td>
+                <td>{{c.address}}</td>
+                <td>{{c.policyNum}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -15,8 +15,6 @@ export class LoginComponent implements OnInit {
 
   backendurl="http://localhost:8080/user";
 
-  // backendurl="http://localhost:8000/user";
-
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email:['', [Validators.required, Validators.email]],

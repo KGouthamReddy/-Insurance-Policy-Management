@@ -1,6 +1,6 @@
 export class PolicyDataModel{
     userId: number;
-    policyNum: number;
+    policyNum: String;
     policyType: String;
     policyId:number;
     approval: number;
